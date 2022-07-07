@@ -1,11 +1,11 @@
-# Taller ARSW Inter (Tablero Multiusuario React con WebSockets)
+# Taller ARSW Inter (Tablero Multiusuario React con WebSockets Seguro)
 
 ## Autor
 **Julian Adolfo Peña Marin**
 
 ## Link heroku
 
-https://immense-dawn-95314.herokuapp.com/
+https://serene-crag-21909.herokuapp.com/
 
 
 ## Built con
