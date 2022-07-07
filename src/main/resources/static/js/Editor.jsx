@@ -42,6 +42,7 @@ class WSBBChannel {
         console.log("In onOpen", evt);
         fetch("/ticket")
             .then(res => res.json())
+            .then(res => console.log("Ticket generado: ", res.ticket))
             .then(res => this.wsocket.send(res.ticket))
     }
     onMessage(evt) {
