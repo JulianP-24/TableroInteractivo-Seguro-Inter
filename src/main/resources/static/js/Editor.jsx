@@ -41,8 +41,8 @@ class WSBBChannel {
     onOpen(evt) {
         console.log("In onOpen", evt);
         let pedirTicket = onLoad();
-        pedirTicket.then(datos => console.log("Ticket generado: ", datos.ticket))
-        pedirTicket.then(datos => this.wsocket.send(datos.ticket));
+        pedirTicket.then(data => console.log("Ticket generado: ", data.ticket))
+        pedirTicket.then(data => this.wsocket.send(data.ticket));
     }
     onMessage(evt) {
         console.log("In onMessage", evt);
