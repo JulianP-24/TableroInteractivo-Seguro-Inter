@@ -25,7 +25,7 @@ function BBServiceURL() {
 
 function onLoad() {
     let response = fetch('/ticket');
-    let datos = response.json();
+    let datos = response.json()
     return datos;
 }
 
