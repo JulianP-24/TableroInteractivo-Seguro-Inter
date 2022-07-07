@@ -24,7 +24,7 @@ function BBServiceURL() {
 }
 
 async function onLoad() {
-    let response = await fetch('/ticket');
+    let response = await fetch("/ticket");
     let datos = await response.json()
     return datos;
 }
