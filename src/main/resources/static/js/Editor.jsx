@@ -17,11 +17,11 @@ class Editor extends React.Component {
 
 // Retorna la url del servicio. Es una función de configuración.
 function BBServiceURL() {
-    /*var host = window.location.host;
+    var host = window.location.host;
     var url = "wss://" + host + "/bbService";
     console.log("URL Calculada: " + url);
-    return url;*/
-    return 'ws://localhost:8080/bbService';
+    return url;
+    //return 'ws://localhost:8080/bbService';
 }
 
 class WSBBChannel {
@@ -36,9 +36,8 @@ class WSBBChannel {
     onOpen(evt) {
         console.log("In onOpen", evt);
         fetch("/ticket")
-            //.then(res => res.json())
+            .then(res => res.json())
             .then(res => console.log("Ticket generado: ", res.json()))
-            //.then(res => this.wsocket.send(res.ticket))
     }
     onMessage(evt) {
         console.log("In onMessage", evt);

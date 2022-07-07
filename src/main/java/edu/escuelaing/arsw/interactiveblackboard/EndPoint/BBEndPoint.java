@@ -25,7 +25,7 @@ public class BBEndPoint {
 
     String ownTicket = null;
 
-    private boolean accepted = false;
+    private boolean accepted = true;
 
     MemCache memCache = new MemCache();
     /* Call this method to send a message to all clients */
