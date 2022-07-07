@@ -13,6 +13,8 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import org.springframework.stereotype.Component;
 
+import edu.escuelaing.arsw.interactiveblackboard.Model.MemCache;
+
 @Component
 @ServerEndpoint("/bbService")
 public class BBEndPoint {
@@ -20,6 +22,12 @@ public class BBEndPoint {
     /* Queue for all open WebSocket sessions */
     static Queue<Session> queue = new ConcurrentLinkedQueue<>();
     Session ownSession = null;
+
+    String ownTicket = null;
+
+    private boolean accepted = false;
+
+    MemCache memCache = new MemCache();
     /* Call this method to send a message to all clients */
 
     public void send(String msg) {
@@ -38,9 +46,17 @@ public class BBEndPoint {
 
     @OnMessage
     public void processPoint(String message, Session session) {
-        System.out.println("Point received:" + message + ". From session: " + session);
-        this.send(message);
+        if (accepted) {
+            System.out.println("Point received:" + message + ". From session: " + session);
+            this.send(message);
+        } else {
+            if (!accepted && memCache.validateTicket(message)) {
+                this.accepted = true;
+                this.ownTicket = message;
+            }
+        }
     }
+        
 
     @OnOpen
     public void openConnection(Session session) {
