@@ -23,6 +23,12 @@ function BBServiceURL() {
     return url;
 }
 
+function onLoad() {
+    let response = fetch('/ticket');
+    let datos = response.json();
+    return datos;
+}
+
 class WSBBChannel {
     constructor(URL, callback) {
         this.URL = URL;
@@ -34,6 +40,9 @@ class WSBBChannel {
     }
     onOpen(evt) {
         console.log("In onOpen", evt);
+        let pedirTicket = onLoad();
+        pedirTicket.then(datos => console.log("Ticket generado: ", datos.ticket))
+        pedirTicket.then(datos => this.wsocket.send(datos.ticket));
     }
     onMessage(evt) {
         console.log("In onMessage", evt);
